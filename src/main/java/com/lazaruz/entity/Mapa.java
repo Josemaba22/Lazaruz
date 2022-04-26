@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.lazaruz.request.MapaRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,15 +28,19 @@ public class Mapa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_mapa")
-	private Long id_mapa;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "nombre")
-	private int nombre;
+	private String nombre;
 	
 	@OneToMany(mappedBy = "mapa", cascade = CascadeType.ALL)
 	private List<Zona> zonas;
 	
 	@OneToMany(mappedBy = "mapa", cascade = CascadeType.ALL)
 	private List<Player> players;
+	
+	public Mapa(MapaRequest request) {
+		this.nombre = request.getNombre();
+	}
 }

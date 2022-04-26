@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.lazaruz.request.PlayerRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +26,8 @@ public class Player {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) 
-	@Column(name = "id_player")
-	private Long id_player;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "nivel")
 	private int nivel;
@@ -49,11 +51,21 @@ public class Player {
 	private int zombies_abatidos;
 
 	@ManyToOne
-	@JoinColumn(name = "id_mapa", referencedColumnName = "id_mapa")
+	@JoinColumn(name = "id_mapa", referencedColumnName = "id")
 	private Mapa mapa;
 
 	@ManyToOne
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
 	private Usuario usuario;
+	
+	public Player(PlayerRequest request) {
+		this.nivel = request.getNivel();
+		this.experiencia = request.getExpericencia();
+		this.fe = request.getFe();
+		this.salud = request.getSalud();
+		this.fuerza = request.getFuerza();
+		this.suerte = request.getSuerte();
+		this.zombies_abatidos = request.getZombies_abatidos();
+	}
 
 }

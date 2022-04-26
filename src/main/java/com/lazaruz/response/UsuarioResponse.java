@@ -14,13 +14,9 @@ import lombok.Setter;
 public class UsuarioResponse {
 	
 	private Long id;
-	
 	private String nombre;
-
 	private String email;
-
 	private String password;
-
 	private int puntos_de_alma;
 	
 	public UsuarioResponse(Usuario usuario) {

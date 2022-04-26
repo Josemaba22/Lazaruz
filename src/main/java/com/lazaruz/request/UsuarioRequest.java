@@ -18,6 +18,6 @@ public class UsuarioRequest {
 	@NotBlank(message = "password es requerido!")
 	private String password;
 	
-	//@NotBlank(message = "puntos de alma es requerido!")
+	//@NotNull(message = "puntos de alma es requerido!")
 	private int puntos_de_alma;
 }

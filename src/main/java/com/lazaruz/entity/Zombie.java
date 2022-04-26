@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.lazaruz.request.ZombieRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +26,8 @@ public class Zombie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_zombie")
-	private Long id_zombie;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "salud")
 	private int salud;
@@ -34,7 +36,12 @@ public class Zombie {
 	private int ataque;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_zona", referencedColumnName = "id_zona")
+	@JoinColumn(name = "id_zona", referencedColumnName = "id")
 	private Zona zona;
+	
+	public Zombie(ZombieRequest request) {
+		this.salud = request.getSalud();
+		this.ataque = request.getAtaque();
+	}
 	
 }

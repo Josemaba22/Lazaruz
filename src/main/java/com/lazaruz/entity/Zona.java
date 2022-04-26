@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.lazaruz.request.ZonaRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,13 +25,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "zombies")
+@Table(name = "zonas")
 public class Zona {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_zona")
-	private Long id_zona;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "eje_y")
 	private int eje_y;
@@ -38,10 +40,16 @@ public class Zona {
 	private int eje_x;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_mapa", referencedColumnName = "id_mapa")
+	@JoinColumn(name = "id_mapa", referencedColumnName = "id")
 	private Mapa mapa;
 	
 	@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
 	private List<Zombie> zombies;
+	
+	
+	public Zona(ZonaRequest request) {
+		this.eje_x = request.getEje_x();
+		this.eje_y = request.getEje_y();
+	}
 	
 }

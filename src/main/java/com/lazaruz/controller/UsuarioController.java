@@ -21,7 +21,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@PostMapping("/register")
+	@PostMapping("/registrar")
 	public UsuarioResponse registrarUsuario(@Valid @RequestBody UsuarioRequest request) {
 		Usuario usuario = usuarioService.registrarUsuario(request);
 		return new UsuarioResponse(usuario);
