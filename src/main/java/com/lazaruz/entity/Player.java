@@ -58,6 +58,12 @@ public class Player {
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
 	private Usuario usuario;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_inventario", referencedColumnName = "id")
+	private Inventario inventario;
+	
+	
+	
 	public Player(PlayerRequest request) {
 		this.nivel = request.getNivel();
 		this.experiencia = request.getExpericencia();

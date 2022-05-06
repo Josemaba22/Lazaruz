@@ -25,4 +25,5 @@ public class MapaController {
 		Mapa mapa = mapaService.registrarMapa(request);
 		return new MapaResponse(mapa);
 	}
+	
 }
