@@ -37,9 +37,6 @@ public class Mapa {
 	@OneToMany(mappedBy = "mapa", cascade = CascadeType.ALL)
 	private List<Zona> zonas;
 	
-	@OneToMany(mappedBy = "mapa", cascade = CascadeType.ALL)
-	private List<Player> players;
-	
 	public Mapa(MapaRequest request) {
 		this.nombre = request.getNombre();
 	}

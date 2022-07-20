@@ -51,8 +51,8 @@ public class Player {
 	private int zombies_abatidos;
 
 	@ManyToOne
-	@JoinColumn(name = "id_mapa", referencedColumnName = "id")
-	private Mapa mapa;
+	@JoinColumn(name = "id_zona", referencedColumnName = "id")
+	private Zona zona;
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id")

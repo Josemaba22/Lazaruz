@@ -21,7 +21,7 @@ public class PlayerResponse {
 	private int fuerza;
 	private int suerte;
 	private int zombies_abatidos;
-	private MapaResponse mapa;
+	private ZonaResponse zona;
 	private UsuarioResponse usuario;
 	
 	public PlayerResponse(Player player) {
@@ -33,7 +33,7 @@ public class PlayerResponse {
 		this.fuerza = player.getFuerza();
 		this.suerte = player.getSuerte();
 		this.zombies_abatidos = player.getZombies_abatidos();
-		this.mapa = new MapaResponse(player.getMapa());
+		this.zona = new ZonaResponse(player.getZona());
 		this.usuario = new UsuarioResponse(player.getUsuario());
 	}
 	

@@ -37,6 +37,9 @@ public class Inventario {
 	@OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
 	private List<Player> players;
 	
+	@OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
+	private List<Zona> zona;
+	
 	public Inventario(InventarioRequest request) {
 		this.cantidad = request.getCantidad();
 	}

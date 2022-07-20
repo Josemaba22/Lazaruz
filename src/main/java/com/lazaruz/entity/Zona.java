@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.lazaruz.request.ZonaRequest;
@@ -45,6 +46,14 @@ public class Zona {
 	
 	@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
 	private List<Zombie> zombies;
+	
+	@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+	private List<Player> players;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_inventario", referencedColumnName = "id")
+    private Inventario inventario;
+	
 	
 	
 	public Zona(ZonaRequest request) {
